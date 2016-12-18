@@ -43,7 +43,7 @@ For detailed explanation on how things work, checkout the [guide](http://vuejs-t
 ## Tips
 
 ```
-for n in `seq 0 75` ; do convert -size 256x256 xc:#ccdddd -pointsize 100 -gravity^Center -annotate 0 "${n}" panel-${n}.png ; done
+for n in `seq 0 75` ; do convert -size 256x256 xc:#34cdd7 -pointsize 100 -gravity^Center -annotate 0 "${n}" panel-${n}.png ; done
 ```
 
 [EoT]
