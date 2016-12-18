@@ -13,7 +13,7 @@
 <style scoped>
 .card.selected {background: #ffeaef; border:5px solid #ffc9c9}
 .card {
-  border:5px solid #fff;
+  border:5px solid #eee;
   animation-duration: 0.5s;
   animation-delay: 0;
   width: 100%;
