@@ -13,6 +13,7 @@
         <table class="table">
           <tr v-for="(item, index) in list">
             <td><h2>{{ index }}</h2></td>
+            <td>{{ item.path }}</td>
             <td><img class="img-responsive img" :src="item.path"></td>
           </tr>
         </table>
