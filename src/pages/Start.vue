@@ -30,7 +30,9 @@
         <ol>
           <li><b>Generate NEW Bingo Card ID</b>を押す → Card IDが生成されます</li>
           <li><b>Start!</b>でビンゴカードが配信されます</li>
+          <li><b>超重要！！: ビンゴになったかどうかは、自分で判定してください！！</b></li>
         </ol>
+        <hr />
         <ul>
           <li>HTML5, CSS3, LocalStorage等を使い、クライアントサイドSingle Page Applicationとして動作します
             <ul>
