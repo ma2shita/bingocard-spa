@@ -1,7 +1,7 @@
 <template>
   <div class="card" :class="[{ selected: selection_map[r-1][c-1] }, cls.animation]">
     <div class="card-header">
-      <h4 class="card-title">{{ list[card_map[r-1][c-1]].id }}</h4>
+      <h4 class="card-title">{{ card_map[r-1][c-1] }}</h4>
       <!-- h4 class="card-title title">{{ list[card_map[r-1][c-1]].title }}</h4 -->
     </div>
     <div class="card-image centered">
@@ -11,10 +11,12 @@
 </template>
 
 <style scoped>
-.selected {background: #bdf}
+.card.selected {background: #ffeaef; border:5px solid #ffc9c9}
 .card {
+  border:5px solid #fff;
   animation-duration: 0.5s;
   animation-delay: 0;
+  width: 100%;
 }
 .card .card-image{padding-top:0}
 .card .card-title{margin-bottom:0}
