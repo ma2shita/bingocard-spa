@@ -7,6 +7,7 @@
 - HTML5 SPA. No use/need the API server
 - Using LocalStorage (Robust to close and reload, cannot play on In-Private mode)
 - Same seed(card ID), Generate same Card
+- Bug: Working "Reset Selection map" needs Reload
 
 ## User's manual
 

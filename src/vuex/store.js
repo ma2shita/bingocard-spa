@@ -40,6 +40,10 @@ const mutations = {
     Vue.set(state.card, 'map', init_state.card_map)
     Vue.set(state.selection, 'map', init_state.selection_map)
   },
+  resetSelectionMap: (state) => {
+    console.log('reset')
+    Vue.set(state.selection, 'map', init_state.selection_map)
+  },
   updateCardId: (state, new_card_id) => {
     state.card.id = new_card_id
   },

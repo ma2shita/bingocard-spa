@@ -23,6 +23,7 @@
       <div class="column col-12">
         <router-link :to="{ name: 'start' }">Back</router-link>
         <pre>{{ card_id }}</pre>
+        <a @click="resetSelectionMap">Reset Selection map (No confirm)</a>
       </div>
     </div>
 </template>
@@ -51,6 +52,11 @@ h4 {
     },
     computed: {
       ...mapGetters(['card_id'])
+    },
+    methods: {
+      resetSelectionMap: function () {
+        this.$store.commit('resetSelectionMap')
+      }
     }
   }
 </script>
