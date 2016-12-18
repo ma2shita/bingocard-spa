@@ -2,5 +2,3 @@
 node_modules/
 dist/
 npm-debug.log
-static/bingo_card/*
-!static/bingo_card/.gitkeep
