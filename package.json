@@ -1,7 +1,7 @@
 {
-  "name": "bingo-panel",
+  "name": "bingocard-spa",
   "version": "1.0.0",
-  "description": "Multi purpose Bingo panel by funkyLover/vue-spa",
+  "description": "HTML5 Single Page Application that Creates Bingo card randomly also Record state",
   "author": "Kohei MATSUSHITA <ma2shita+git@ma2shita.jp>",
   "private": true,
   "scripts": {
