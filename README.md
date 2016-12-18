@@ -40,4 +40,10 @@ For detailed explanation on how things work, checkout the [guide](http://vuejs-t
 - Reset LocalStorage: `?action=reset`
 - Delete LocalStorage: According to Browser setting
 
+## Tips
+
+```
+for n in `seq 0 75` ; do convert -size 256x256 xc:#ccdddd -pointsize 100 -gravity^Center -annotate 0 "${n}" panel-${n}.png ; done
+```
+
 [EoT]
