@@ -45,6 +45,12 @@
         </ul>
       </div>
     </div>
+
+    <div class="columns">
+      <div class="column col-12">
+        <router-link :to="{ name: 'items' }">Items</router-link>
+      </div>
+    </div>
   </div>
 </template>
 
