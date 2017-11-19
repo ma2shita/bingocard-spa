@@ -1,0 +1,149 @@
+<!DOCTYPE HTML>
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8">
+  <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+  <title>BingoCard SPA! / Dealer</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+  <script src="//cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script>
+  <script src="//jp.vuejs.org/js/vue.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/seedrandom/2.4.3/seedrandom.min.js"></script>
+  <!-- UIkit CSS -->
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/uikit/3.0.0-beta.35/css/uikit.min.css" />
+  <!-- UIkit JS -->
+  <script src="//cdnjs.cloudflare.com/ajax/libs/uikit/3.0.0-beta.35/js/uikit.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/uikit/3.0.0-beta.35/js/uikit-icons.min.js"></script>
+</head>
+
+<body>
+  <div id="app1" class="uk-container uk-margin-top">
+    <form class="uk-grid-small" uk-grid>
+      <div class="uk-form-controls">
+        <button type="button" @click="pick_a_card()" :disabled="options.length == 0" class="uk-button uk-button-default">カードを引く</button>
+      </div>
+    </form>
+
+    <div class="uk-margin-top">
+      <div uk-grid class="uk-child-width-1-1 uk-grid-collapse uk-text-center">
+        <div class="uk-card uk-card-default">
+          <div class="uk-card-media-top">
+            <img :src="bingo_item(latest).src" class="uk-responsive-width" style="width:50%;">
+            <div class="uk-text-lead uk-text-bold">{{ latest }}</div>
+            <div class="uk-text-large">{{ bingo_item(latest).text }}</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="uk-margin-top">
+      <div uk-grid class="uk-child-width-1-6 uk-grid-collapse uk-text-center">
+        <div v-for="i in results" class="uk-card uk-card-default">
+          <div class="uk-card-media-top">
+            <img :src="bingo_item(i).src" class="uk-responsive-width" style="width:50%;">
+            <div class="uk-text-lead uk-text-bold">{{ i }}</div>
+            <div class="uk-text-meta">{{ bingo_item(i).text }}</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <form class="uk-grid-small uk-margin-top" uk-grid>
+      <div class="uk-form-controls">
+        <button type="button" @click="new_game()" :disabled="false" class="uk-button uk-button-default">新規ゲーム</button>
+      </div>
+    </form>
+  </div>
+
+  <div class="uk-section uk-section-muted uk-margin-top">
+    <div class="uk-container">
+      <div uk-grid class="uk-grid-match uk-child-width-1-2@s">
+        <div>
+          <dl class="uk-description-list">
+            <dt>Reference</dt>
+            <dd>
+              <a href="https://github.com/ma2shita/bingocard-spa">github.com/ma2shita/bingocard-spa</a>
+            </dd>
+          </dl>
+        </div>
+        <div>
+          <dl class="uk-description-list">
+            <dt>License</dt>
+            <dd>MIT / Copyright 2017
+              <a href="https://twitter.com/ma2shita">Kohei MATSUSHITA</a>
+            </dd>
+          </dl>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</body>
+
+<script src="config.js"></script>
+<script>
+  const app1 = new Vue({
+    el: "#app1",
+    data: {
+      options: [],
+      latest: null,
+      results: [],
+      shuffling: false // for Ent.
+    },
+    methods: {
+      new_game: function () {
+        var i = bingo_items; // Load
+        delete i[0]; // Remove origin
+        this.options = Object.keys(i);
+        this.latest = null;
+        this.results = [];
+        sessionStorage.setItem('options', JSON.stringify(this.options)); // for UX
+        sessionStorage.removeItem('latest', this.latest); // for UX
+        sessionStorage.removeItem('results'); // for UX
+        this.shuffling = false;
+      },
+      pick_a_card: function () {
+        this.shuffling = true;
+        var random_base = Object.keys(bingo_items); // Load
+        var self = this; // for Ent.
+        var c = 0; // for Ent.
+        var timer = setInterval(function () { // for Ent.
+          c++;
+          if (c > pickup_wait) {
+            clearInterval(timer);
+            self.options = _.shuffle(self.options); // main
+            self.latest = self.options.shift(); // main
+            self.results.push(self.latest); // main
+            sessionStorage.setItem('options', JSON.stringify(self.options)); // for UX
+            sessionStorage.setItem('latest', self.latest); // for UX
+            sessionStorage.setItem('results', JSON.stringify(self.results)); // for UX
+            self.shuffling = false;
+          } else {
+            self.latest = _.sample(random_base, 1)[0];
+          }
+        }, 60);
+      },
+      bingo_item: function (i) {
+        var image_prefix = img_src_prefix;
+        var r = null;
+        try {
+          r = { src: `${image_prefix}${bingo_items[i].src}`, text: bingo_items[i].text };
+        } catch (e) {
+          r = { src: "https://dummyimage.com/512/c7e8f5/fff&text=BingoSAP!", text: "" }
+        }
+        return r;
+      }
+    }
+  });
+
+  window.onload = function () {
+    if (sessionStorage.getItem('options') && sessionStorage.getItem('latest') && sessionStorage.getItem('results')) { // for UX
+      app1.options = JSON.parse(sessionStorage.getItem('options'));
+      app1.latest = sessionStorage.getItem('latest');
+      app1.results = JSON.parse(sessionStorage.getItem('results'));
+    }
+  };
+</script>
+
+</html>
