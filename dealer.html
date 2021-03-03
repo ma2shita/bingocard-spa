@@ -88,8 +88,7 @@
       return {
         options: [],
         latest: null,
-        results: [],
-        shuffling: false // for Ent.
+        results: []
       }
     },
     created() {
@@ -109,10 +108,8 @@
         sessionStorage.setItem('options', JSON.stringify(this.options)); // for UX
         sessionStorage.removeItem('latest', this.latest); // for UX
         sessionStorage.removeItem('results'); // for UX
-        this.shuffling = false;
       },
       pick_a_card: function () {
-        this.shuffling = true;
         var random_base = Object.keys(bingo_items); // Load
         var self = this; // for Ent.
         var c = 0; // for Ent.
@@ -126,7 +123,6 @@
             sessionStorage.setItem('options', JSON.stringify(self.options)); // for UX
             sessionStorage.setItem('latest', self.latest); // for UX
             sessionStorage.setItem('results', JSON.stringify(self.results)); // for UX
-            self.shuffling = false;
           } else {
             self.latest = _.sample(random_base, 1)[0];
           }
