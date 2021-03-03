@@ -24,17 +24,8 @@
 </head>
 
 <body>
-  <div id="app1" class="uk-container uk-margin-top">
-    <!-- Game -->
-    <form class="uk-grid-small" uk-grid>
-      <div class="uk-width-1-1">
-        <div class="uk-form-controls">
-          <button type="button" @click="new_game()" :disabled="false" class="uk-button uk-button-default">新規ゲーム</button>
-          <button type="button" @click="deal_card()" :disabled="playing || !card_id" class="uk-button uk-button-default">カードを配る</button>
-        </div>
-      </div>
-    </form>
-    <div v-if="playing" class="uk-margin-top">
+  <div id="app1" class="uk-container">
+    <div v-if="playing" class="uk-margin-top uk-margin-large-bottom">
       <!-- Card -->
       <div v-for="(items, ri) in cards" uk-grid class="uk-child-width-expand uk-grid-collapse uk-text-center">
         <div v-for="(item, ci) in items" :class="{ selected: item[1] }" class="uk-card uk-card-default">
@@ -48,12 +39,13 @@
         </div>
       </div>
     </div>
-    <div v-else class="uk-margin-top">
+    <div v-else class="uk-margin-top uk-margin-large-bottom">
+      <p>パソコン、スマホ、タブレット OK です</p>
       <h3>あそびかた</h3>
       <ol>
         <li>新規ゲームをクリック</li>
         <li>カードを配るをクリック</li>
-        <li>普通にビンゴとして遊んでください<br/>クリック毎に背景色が変わります</li>
+        <li>普通にビンゴとして遊んでください<br/>クリック／タップ毎に背景色が変わります</li>
       </ol>
       <h3>注意点</h3>
       <ul>
@@ -63,6 +55,15 @@
         <li>ブラウザを閉じちゃうと、リセットされます（リロードは大丈夫）</li>
       </ul>
     </div>
+    <!-- Game -->
+    <form class="uk-grid-small" uk-grid>
+      <div class="uk-width-1-1">
+        <div class="uk-form-controls">
+          <button type="button" @click="new_game()" :disabled="false" class="uk-button uk-button-default">新規ゲーム</button>
+          <button type="button" @click="deal_card()" :disabled="playing || !card_id" class="uk-button uk-button-default">カードを配る</button>
+        </div>
+      </div>
+    </form>
   </div>
 
   <div class="uk-section uk-section-muted uk-margin-top">
@@ -70,16 +71,20 @@
       <div uk-grid class="uk-grid-match uk-child-width-1-2@s">
         <div>
           <dl class="uk-description-list">
-            <dt>Reference</dt>
+            <dt>ビンゴマシーンはこちら</dt>
             <dd>
-              <a href="https://github.com/ma2shita/bingocard-spa">github.com/ma2shita/bingocard-spa</a>
+              <a href="dealer.html">dealer.html</a>
             </dd>
           </dl>
         </div>
         <div>
           <dl class="uk-description-list">
+            <dt>Reference</dt>
+            <dd>
+              <a href="https://github.com/ma2shita/bingocard-spa">github.com/ma2shita/bingocard-spa</a>
+            </dd>
             <dt>License</dt>
-            <dd>MIT / Copyright 2017
+            <dd>MIT / Copyright 2021
               <a href="https://twitter.com/ma2shita">Kohei MATSUSHITA</a>
             </dd>
           </dl>
