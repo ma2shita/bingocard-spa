@@ -133,6 +133,7 @@
           }
         }
         this.cards[2].splice(2, 1, [0, false]); // NOTE: Set fixed for center
+        sessionStorage.setItem('cards', JSON.stringify(this.cards)); // for UX
       },
       select: function (r, c) {
         var i = this.cards[r][c];
