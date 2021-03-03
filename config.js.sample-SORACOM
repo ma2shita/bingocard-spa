@@ -2,9 +2,10 @@ const img_src_prefix = 'assets/';
 const pickup_wait = 25;
 
 /*
+ How to generate ?
  $ ruby -rjson -e 'puts Dir.glob("*.png").shuffle.map.with_index.inject({}){|h, (i,n)|h[n]={src:i, text:i.split("-")[1].split(".")[0]};h}.to_json
-
- and Edit
+ and Edit.
+ "0" is origin (center element.)
 */
 const bingo_items = {
   "0": {
