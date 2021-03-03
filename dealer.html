@@ -8,7 +8,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
   <script src="//cdn.jsdelivr.net/npm/underscore@1.12.0/underscore-min.js"></script>
-  <script src="//jp.vuejs.org/js/vue.min.js"></script>
+  <script src="//unpkg.com/vue@next"></script>
   <script src="//cdnjs.cloudflare.com/ajax/libs/seedrandom/3.0.5/seedrandom.min.js"></script>
   <!-- UIkit CSS -->
   <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/uikit@3.6.17/dist/css/uikit.min.css" />
@@ -83,13 +83,21 @@
 
 <script src="config.js"></script>
 <script>
-  const app1 = new Vue({
-    el: "#app1",
-    data: {
-      options: [],
-      latest: null,
-      results: [],
-      shuffling: false // for Ent.
+  const app1 = Vue.createApp({
+    data() {
+      return {
+        options: [],
+        latest: null,
+        results: [],
+        shuffling: false // for Ent.
+      }
+    },
+    created() {
+      if (sessionStorage.getItem('options') && sessionStorage.getItem('latest') && sessionStorage.getItem('results')) { // for UX
+        this.options = JSON.parse(sessionStorage.getItem('options'));
+        this.latest = sessionStorage.getItem('latest');
+        this.results = JSON.parse(sessionStorage.getItem('results'));
+      }
     },
     methods: {
       new_game: function () {
@@ -138,12 +146,8 @@
   });
 
   window.onload = function () {
-    if (sessionStorage.getItem('options') && sessionStorage.getItem('latest') && sessionStorage.getItem('results')) { // for UX
-      app1.options = JSON.parse(sessionStorage.getItem('options'));
-      app1.latest = sessionStorage.getItem('latest');
-      app1.results = JSON.parse(sessionStorage.getItem('results'));
-    }
-  };
+    app1.mount('#app1');
+  }
 </script>
 
 </html>
