@@ -15,6 +15,12 @@
   <!-- UIkit JS -->
   <script src="//cdn.jsdelivr.net/npm/uikit@3.6.17/dist/js/uikit.min.js"></script>
   <script src="//cdn.jsdelivr.net/npm/uikit@3.6.17/dist/js/uikit-icons.min.js"></script>
+
+  <style>
+    .choosing {
+      background: rgb(231, 230, 220);
+    }
+  </style>
 </head>
 
 <body>
@@ -29,7 +35,7 @@
       <div uk-grid class="uk-child-width-1-1 uk-grid-collapse uk-text-center">
         <div class="uk-card uk-card-default">
           <div class="uk-card-media-top">
-            <img :src="bingo_item(latest).src" class="uk-responsive-width" style="width:50%;">
+            <img :src="bingo_item(latest).src" class="uk-responsive-width" :class="{choosing: choosing}" style="width:50%;">
             <div class="uk-text-lead uk-text-bold">{{ latest }}</div>
             <div class="uk-text-large">{{ bingo_item(latest).text }}</div>
           </div>
@@ -92,7 +98,8 @@
       return {
         options: [],
         latest: null,
-        results: []
+        results: [],
+        choosing: false
       }
     },
     created() {
@@ -119,7 +126,10 @@
         var c = 0; // for Ent.
         var timer = setInterval(function () { // for Ent.
           c++;
-          if (c > pickup_wait) {
+          self.choosing = (c < pickup_wait);
+          if (c < pickup_wait) {
+            self.latest = _.sample(random_base, 1)[0];
+          } else {
             clearInterval(timer);
             self.options = _.shuffle(self.options); // main
             self.latest = self.options.shift(); // main
@@ -127,8 +137,6 @@
             sessionStorage.setItem('options', JSON.stringify(self.options)); // for UX
             sessionStorage.setItem('latest', self.latest); // for UX
             sessionStorage.setItem('results', JSON.stringify(self.results)); // for UX
-          } else {
-            self.latest = _.sample(random_base, 1)[0];
           }
         }, 60);
       },
