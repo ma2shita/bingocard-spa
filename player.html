@@ -40,27 +40,27 @@
       </div>
     </div>
     <div v-else class="uk-margin-top uk-margin-large-bottom">
-      <p>パソコン、スマホ、タブレット OK です</p>
-      <h3>あそびかた</h3>
+      <p>パソコン、スマホ、タブレット OK です / Available PC, smartphone, table.</p>
+      <h3>あそびかた / How to Play</h3>
       <ol>
-        <li>新規ゲームをクリック</li>
-        <li>カードを配るをクリック</li>
-        <li>普通にビンゴとして遊んでください<br/>クリック／タップ毎に背景色が変わります</li>
+        <li>新規ゲームをクリック / Click "New Game"</li>
+        <li>カードを配るをクリック / Click "Deal"</li>
+        <li>普通にビンゴとして遊んでください / Enjoy BINGO !!<br> クリック／タップ毎に背景色が変わります / Toggle background color each click/tap</li>
       </ol>
-      <h3>注意点</h3>
+      <h3>注意点 / READ ME</h3>
       <ul>
-        <li>モダンなブラウザでお願いします</li>
-        <li>ビンゴ判定は自分でやってください</li>
-        <li>新規ゲームを押すと、リセットされます</li>
-        <li>ブラウザを閉じちゃうと、リセットされます（リロードは大丈夫）</li>
+        <li>モダンなブラウザでお願いします / It works under modern brower.</li>
+        <li>ビンゴ判定は自分でやってください / BINGO is self judgement, thank you for your cooperation. (^^</li>
+        <li>新規ゲームを押すと、リセットされます / "New Game" is new game.</li>
+        <li>ブラウザを閉じちゃうと、リセットされます（リロードは大丈夫） / Windows close means end of game.</li>
       </ul>
     </div>
     <!-- Game -->
     <form class="uk-grid-small" uk-grid>
       <div class="uk-width-1-1">
         <div class="uk-form-controls">
-          <button type="button" @click="new_game()" :disabled="false" class="uk-button uk-button-default">新規ゲーム</button>
-          <button type="button" @click="deal_card()" :disabled="playing || !card_id" class="uk-button uk-button-default">カードを配る</button>
+          <button type="button" @click="new_game()" :disabled="false" class="uk-button uk-button-default">新規ゲーム / New Game</button>
+          <button type="button" @click="deal_card()" :disabled="playing || !card_id" class="uk-button uk-button-default">カードを配る / Deal</button>
         </div>
       </div>
     </form>
