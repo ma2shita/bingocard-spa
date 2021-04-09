@@ -108,6 +108,10 @@
         this.latest = sessionStorage.getItem('latest');
         this.results = JSON.parse(sessionStorage.getItem('results'));
       }
+      for (let i in bingo_items) {
+        const image = new Image();
+        image.src = `${img_src_prefix}${bingo_items[i].src}`;
+      }
     },
     methods: {
       new_game: function () {
