@@ -3,313 +3,313 @@ const pickup_wait = 25;
 
 /*
  How to generate ?
- $ ruby -rjson -e 'puts Dir.glob("*.png").shuffle.map.with_index.inject({}){|h, (i,n)|h[n]={src:i, text:i.split("-")[1].split(".")[0]};h}.to_json
+ $ ruby -rjson -e 'puts Dir.glob("*.png").shuffle.map.with_index.inject({}){|h, (i,n)|h[n]={src:i, text:i.split("-")[1].split(".")[0]};h}.to_json'
  and Edit.
  "0" is origin (center element.)
 */
 const bingo_items = {
   "0": {
-    "src": "SISS002-SORACOM Platform B.png",
+    "src": "SISS002.png",
     "text": "SORACOM Platform B"
   },
   "1": {
-    "src": "SISS010-SORACOM Door.png",
-    "text": "SORACOM Door"
+    "src": "SISS021.png",
+    "text": "SORACOM Lagoon"
   },
   "2": {
-    "src": "SIS0031-セキュリティC.png",
-    "text": "セキュリティC"
+    "src": "SISS010.png",
+    "text": "SORACOM Door"
   },
   "3": {
-    "src": "SIS0114-トラック.png",
-    "text": "トラック"
+    "src": "SIS0129.png",
+    "text": "船"
   },
   "4": {
-    "src": "SIS0115-バス.png",
-    "text": "バス"
+    "src": "SISS026.png",
+    "text": "SORACOM Peek"
   },
   "5": {
-    "src": "SIS0093-LoRa ゲートウェイ A.png",
-    "text": "LoRa ゲートウェイ A"
+    "src": "SIS0091.png",
+    "text": "SBR B"
   },
   "6": {
-    "src": "SISS015-SORACOM Inventory.png",
-    "text": "SORACOM Inventory"
+    "src": "SIS0160.png",
+    "text": "ジャイロ"
   },
   "7": {
-    "src": "SIS0090-SBR A.png",
-    "text": "SBR A"
+    "src": "SISS027.png",
+    "text": "SORACOM Arc"
   },
   "8": {
-    "src": "SIS0118-オートバイ.png",
+    "src": "SIS0118.png",
     "text": "オートバイ"
   },
   "9": {
-    "src": "SIS0066-矢印C.png",
-    "text": "矢印C"
+    "src": "SISS022.png",
+    "text": "SORACOM Funk"
   },
   "10": {
-    "src": "SIS0124-ブルドーザー.png",
-    "text": "ブルドーザー"
+    "src": "SIS0093.png",
+    "text": "LoRa ゲートウェイ A"
   },
   "11": {
-    "src": "SISS014-SORACOM Harvest.png",
-    "text": "SORACOM Harvest"
+    "src": "SIS0031.png",
+    "text": "セキュリティC"
   },
   "12": {
-    "src": "SISS004-Air SIM B.png",
-    "text": "Air SIM B"
+    "src": "SISS015.png",
+    "text": "SORACOM Inventory"
   },
   "13": {
-    "src": "SIS0096-LoRa モジュール B.png",
-    "text": "LoRa モジュール B"
+    "src": "SIS0217.png",
+    "text": "5G デバイス B"
   },
   "14": {
-    "src": "SISS018-SORACOM Air.png",
-    "text": "SORACOM Air"
+    "src": "SIS0017.png",
+    "text": "ドングル"
   },
   "15": {
-    "src": "SIS0047-夜間.png",
-    "text": "夜間"
-  },
-  "16": {
-    "src": "SIS0059-メール.png",
-    "text": "メール"
-  },
-  "17": {
-    "src": "SISS006-SORACOM Canal.png",
+    "src": "SISS006.png",
     "text": "SORACOM Canal"
   },
-  "18": {
-    "src": "SIS0109-Sigfox モジュール B.png",
-    "text": "Sigfox モジュール B"
-  },
-  "19": {
-    "src": "SIS0013-監視カメラ.png",
-    "text": "監視カメラ"
-  },
-  "20": {
-    "src": "SISS016-SORACOM Inventory client.png",
-    "text": "SORACOM Inventory client"
-  },
-  "21": {
-    "src": "SIS0099-VPG.png",
-    "text": "VPG"
-  },
-  "22": {
-    "src": "SISS007-SORACOM Direct.png",
-    "text": "SORACOM Direct"
-  },
-  "23": {
-    "src": "SISS009-SORACOM Funnel.png",
+  "16": {
+    "src": "SISS009.png",
     "text": "SORACOM Funnel"
   },
-  "24": {
-    "src": "SIS0061-再読み込み.png",
-    "text": "再読み込み"
+  "17": {
+    "src": "SIS0221.png",
+    "text": "診断"
   },
-  "25": {
-    "src": "SISS005-SORACOM Beam.png",
-    "text": "SORACOM Beam"
+  "18": {
+    "src": "SIS0220.png",
+    "text": "バーチャルSIM"
   },
-  "26": {
-    "src": "SIS0122-ショベルカー.png",
-    "text": "ショベルカー"
-  },
-  "27": {
-    "src": "SIS0126-トラクター.png",
-    "text": "トラクター"
-  },
-  "28": {
-    "src": "SIS0121-ヘリコプター.png",
-    "text": "ヘリコプター"
-  },
-  "29": {
-    "src": "SIS0101-相互接続網.png",
-    "text": "相互接続網"
-  },
-  "30": {
-    "src": "SIS0042-送信.png",
-    "text": "送信"
-  },
-  "31": {
-    "src": "SIS0125-ダンプカー.png",
-    "text": "ダンプカー"
-  },
-  "32": {
-    "src": "SIS0128-ボート.png",
-    "text": "ボート"
-  },
-  "33": {
-    "src": "SISS017-SORACOM Junction.png",
-    "text": "SORACOM Junction"
-  },
-  "34": {
-    "src": "SIS0058-グラフ.png",
-    "text": "グラフ"
-  },
-  "35": {
-    "src": "SIS0107-Beer.png",
-    "text": "Beer"
-  },
-  "36": {
-    "src": "SIS0004-基地局.png",
-    "text": "基地局"
-  },
-  "37": {
-    "src": "SIS0132-スペースシャトル.png",
-    "text": "スペースシャトル"
-  },
-  "38": {
-    "src": "SIS0003-交換局.png",
-    "text": "交換局"
-  },
-  "39": {
-    "src": "SIS0050-認証.png",
-    "text": "認証"
-  },
-  "40": {
-    "src": "SIS0046-日中.png",
-    "text": "日中"
-  },
-  "41": {
-    "src": "SIS0057-ビックデータ.png",
-    "text": "ビックデータ"
-  },
-  "42": {
-    "src": "SIS0102-Safe.png",
-    "text": "Safe"
-  },
-  "43": {
-    "src": "SIS0134-衛星.png",
-    "text": "衛星"
-  },
-  "44": {
-    "src": "SIS0123-クレーン.png",
-    "text": "クレーン"
-  },
-  "45": {
-    "src": "SIS0131-気球.png",
-    "text": "気球"
-  },
-  "46": {
-    "src": "SIS0112-自動車.png",
-    "text": "自動車"
-  },
-  "47": {
-    "src": "SIS0113-タクシー.png",
-    "text": "タクシー"
-  },
-  "48": {
-    "src": "SIS0009-スマホ.png",
-    "text": "スマホ"
-  },
-  "49": {
-    "src": "SIS0016-基板.png",
-    "text": "基板"
-  },
-  "50": {
-    "src": "SIS0092-Global.png",
-    "text": "Global"
-  },
-  "51": {
-    "src": "SIS0035-コード.png",
-    "text": "コード"
-  },
-  "52": {
-    "src": "SIS0091-SBR B.png",
-    "text": "SBR B"
-  },
-  "53": {
-    "src": "SIS0070-システム処理C.png",
-    "text": "システム処理C"
-  },
-  "54": {
-    "src": "SIS0133-UFO.png",
-    "text": "UFO"
-  },
-  "55": {
-    "src": "SIS0129-船.png",
-    "text": "船"
-  },
-  "56": {
-    "src": "SIS0127-除雪車.png",
-    "text": "除雪車"
-  },
-  "57": {
-    "src": "SIS0055-コントローラブル.png",
+  "19": {
+    "src": "SIS0055.png",
     "text": "コントローラブル"
   },
-  "58": {
-    "src": "SIS0105-Connect B.png",
-    "text": "Connect B"
+  "20": {
+    "src": "SIS0196.png",
+    "text": "ロボットアーム"
   },
-  "59": {
-    "src": "SIS0116-電車.png",
-    "text": "電車"
+  "21": {
+    "src": "SIS0212.png",
+    "text": "VPG Type"
   },
-  "60": {
-    "src": "SIS0119-自転車.png",
-    "text": "自転車"
+  "22": {
+    "src": "SIS0161.png",
+    "text": "機械学習エンジンA"
   },
-  "61": {
-    "src": "SISS011-SORACOM Gate.png",
+  "23": {
+    "src": "SISS019.png",
+    "text": "SORACOM Krypton"
+  },
+  "24": {
+    "src": "SISS024.png",
+    "text": "SORACOM Napter"
+  },
+  "25": {
+    "src": "SIS0197.png",
+    "text": "ロボット"
+  },
+  "26": {
+    "src": "SIS0092.png",
+    "text": "Global"
+  },
+  "27": {
+    "src": "SISS016.png",
+    "text": "SORACOM Inventory client"
+  },
+  "28": {
+    "src": "SISS012.png",
+    "text": "Air SIM for Global A"
+  },
+  "29": {
+    "src": "SIS0004.png",
+    "text": "基地局"
+  },
+  "30": {
+    "src": "SISS023.png",
+    "text": "SORACOM Mosaic"
+  },
+  "31": {
+    "src": "SIS0132.png",
+    "text": "スペースシャトル"
+  },
+  "32": {
+    "src": "SISS011.png",
     "text": "SORACOM Gate"
   },
-  "62": {
-    "src": "SIS0025-サーバーC.png",
-    "text": "サーバーC"
+  "33": {
+    "src": "SIS0150.png",
+    "text": "Wio LTE"
   },
-  "63": {
-    "src": "SIS0014-ドローン.png",
-    "text": "ドローン"
+  "34": {
+    "src": "SIS0138.png",
+    "text": "SORACOM Funnel アダプタ"
   },
-  "64": {
-    "src": "SIS0120-飛行機.png",
-    "text": "飛行機"
+  "35": {
+    "src": "SISS025.png",
+    "text": "SORACOM Orbit"
   },
-  "65": {
-    "src": "SIS0038-設定C.png",
-    "text": "設定C"
+  "36": {
+    "src": "SISS007.png",
+    "text": "SORACOM Direct"
   },
-  "66": {
-    "src": "SIS0130-タンカー.png",
-    "text": "タンカー"
+  "37": {
+    "src": "SISS004.png",
+    "text": "Air SIM B"
   },
-  "67": {
-    "src": "SIS0048-認証キー.png",
-    "text": "認証キー"
+  "38": {
+    "src": "SIS0181.png",
+    "text": "エクスカリバー"
   },
-  "68": {
-    "src": "SIS0087-通信経路（分岐）.png",
-    "text": "通信経路（分岐）"
+  "39": {
+    "src": "SISS005.png",
+    "text": "SORACOM Beam"
   },
-  "69": {
-    "src": "SIS0053-API.png",
-    "text": "API"
-  },
-  "70": {
-    "src": "SIS0045-時間.png",
-    "text": "時間"
-  },
-  "71": {
-    "src": "SISS008-SORACOM Endorse.png",
-    "text": "SORACOM Endorse"
-  },
-  "72": {
-    "src": "SISS013-Air SIM for Global B.png",
+  "40": {
+    "src": "SISS013.png",
     "text": "Air SIM for Global B"
   },
-  "73": {
-    "src": "SIS0027-ユーザーA.png",
+  "41": {
+    "src": "SIS0215.png",
+    "text": "GPS マルチユニット SORACOM Edition"
+  },
+  "42": {
+    "src": "SIS0152.png",
+    "text": "プロセッサ"
+  },
+  "43": {
+    "src": "SIS0201.png",
+    "text": "マップ"
+  },
+  "44": {
+    "src": "SISS008.png",
+    "text": "SORACOM Endorse"
+  },
+  "45": {
+    "src": "SIS0090.png",
+    "text": "SBR A"
+  },
+  "46": {
+    "src": "SISS020.png",
+    "text": "SORACOM Krypton key"
+  },
+  "47": {
+    "src": "SIS0213.png",
+    "text": "VPG Type"
+  },
+  "48": {
+    "src": "SIS0026.png",
+    "text": "データベース"
+  },
+  "49": {
+    "src": "SIS0005.png",
+    "text": "インターネット"
+  },
+  "50": {
+    "src": "SIS0113.png",
+    "text": "タクシー"
+  },
+  "51": {
+    "src": "SISS014.png",
+    "text": "SORACOM Harvest"
+  },
+  "52": {
+    "src": "SIS0209.png",
+    "text": "S+Camera B"
+  },
+  "53": {
+    "src": "SIS0107.png",
+    "text": "Beer"
+  },
+  "54": {
+    "src": "SIS0193.png",
+    "text": "PLC"
+  },
+  "55": {
+    "src": "SIS0014.png",
+    "text": "ドローン"
+  },
+  "56": {
+    "src": "SIS0202.png",
+    "text": "有線LAN"
+  },
+  "57": {
+    "src": "SIS0133.png",
+    "text": "UFO"
+  },
+  "58": {
+    "src": "SIS0027.png",
     "text": "ユーザーA"
   },
+  "59": {
+    "src": "SIS0207.png",
+    "text": "不届き者"
+  },
+  "60": {
+    "src": "SISS018.png",
+    "text": "SORACOM Air"
+  },
+  "61": {
+    "src": "SIS0087.png",
+    "text": "通信経路(分岐)"
+  },
+  "62": {
+    "src": "SIS0153.png",
+    "text": "ボタン"
+  },
+  "63": {
+    "src": "SIS0016.png",
+    "text": "基板"
+  },
+  "64": {
+    "src": "SIS0025.png",
+    "text": "サーバーC"
+  },
+  "65": {
+    "src": "SIS0156.png",
+    "text": "温度計"
+  },
+  "66": {
+    "src": "SIS0048.png",
+    "text": "認証キー"
+  },
+  "67": {
+    "src": "SIS0042.png",
+    "text": "送信"
+  },
+  "68": {
+    "src": "SIS0038.png",
+    "text": "設定C"
+  },
+  "69": {
+    "src": "SISS017.png",
+    "text": "SORACOM Junction"
+  },
+  "70": {
+    "src": "SIS0165.png",
+    "text": "グラフB"
+  },
+  "71": {
+    "src": "SIS0137.png",
+    "text": "Air eSIM B"
+  },
+  "72": {
+    "src": "SIS0214.png",
+    "text": "S+Smart Notification Service"
+  },
+  "73": {
+    "src": "SIS0134.png",
+    "text": "衛星"
+  },
   "74": {
-    "src": "SIS0008-LAPTOP.png",
-    "text": "LAPTOP"
+    "src": "SIS0056.png",
+    "text": "SDK"
   },
   "75": {
-    "src": "SIS0117-原付.png",
-    "text": "原付"
+    "src": "SIS0182.png",
+    "text": "スライム"
   }
 }
